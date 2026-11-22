@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Vos 🍏 | Inicio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <audio id="click-audio" src="imagenes/pesterchum-cease-end-message-sound.mp3" preload="auto"></audio>
+    <div class="body-overlay"></div>
+
+    <div class="navbar">
+        <ul>
+            <li><a href="index.html" class="activo" onclick="reproducirClick()">Inicio</a></li>
+            <li><a href="gustos.html" onclick="reproducirClick()">Lo que amo de vos</a></li>
+            <li><a href="canciones.html" onclick="reproducirClick()">Canciones</a></li>
+            <li><a href="galeria.html" onclick="reproducirClick()">Fotos y dibujos</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <h1 class="page-title">PARA MI NATHITA HERMOSA Y PRECIOSA 🍏</h1>
+
+        <div class="window strips draggable">
+            <div class="window-header">
+                <p>BIENVENIDA.EXE</p>
+                <div class="buttons">
+                    <div class="button minimize"><i class="fas fa-window-minimize"></i></div>
+                    <div class="button maximize"><i class="far fa-square"></i></div>
+                    <div class="button close"><i class="fas fa-times"></i></div>
+                </div>
+            </div>
+
+            <div class="window-body-wrapper">
+                <div class="window-body hero-box">
+                    <h2 class="subtitulo-verde">Un espacio verde manzana hecho para vos</h2>
+                    <img src="imagenes/WhatsApp Image 2026-11-17 at 20.36.41.jpeg" alt="Foto de ella" class="foto-principal">
+                    <p>Acá reuní todo lo que me encanta de vos, tus gustos, las canciones que me hacen acordar a vos, fotos, dibujos, te amo mucho mi vida.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+    <script>
+
+        function reproducirClick() {
+            const audio = document.getElementById('click-audio');
+            if (audio) {
+                audio.currentTime = 0;
+                audio.play().catch(() => {});
+            }
+        }
+    </script>
+</body>
+</html>

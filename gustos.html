@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lo que amo de vos 🍏</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <audio id="click-audio" src="imagenes/pesterchum-cease-end-message-sound.mp3" preload="auto"></audio>
+    <div class="body-overlay"></div>
+
+    <div class="navbar">
+        <ul>
+            <li><a href="index.html" onclick="reproducirClick()">Inicio</a></li>
+            <li><a href="gustos.html" class="activo" onclick="reproducirClick()">Lo que amo de vos</a></li>
+            <li><a href="canciones.html" onclick="reproducirClick()">Canciones</a></li>
+            <li><a href="galeria.html" onclick="reproducirClick()">Fotos y dibujos</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="content">
+        <h1 class="page-title">Tus gustos y lo que amo de vos</h1>
+
+        <div class="window strips draggable">
+            <div class="window-header">
+                <p>GUSTOS_Y_AMOR.TXT</p>
+                <div class="buttons">
+                    <div class="button minimize"><i class="fas fa-window-minimize"></i></div>
+                    <div class="button maximize"><i class="far fa-square"></i></div>
+                    <div class="button close"><i class="fas fa-times"></i></div>
+                </div>
+            </div>
+
+            <div class="window-body-wrapper">
+                <div class="window-body">
+                    <div class="grilla">
+                        <div class="subtarjeta">
+                            <h2 class="subtitulo-verde">Tus gustos y pasiones</h2>
+                            <ul class="lista-manzana">
+                                <li><strong>Madness Combat:</strong> Que te guste una saga tan violenta y que tu personaje favorito sea Sanford por tener un rasgo como el tuyo se me hace chistosón y me encanta.</li>
+                                <li><strong>My Little Pony:</strong> Tus ponis favoritas son Pinkie Pie porque es graciosa y amable con los demás como vos; Rarity porque es algo tímida a veces y le gusta ayudar a la gente y a los animales; y Twilight Sparkle porque es inteligente como vos.</li>
+                                <li><strong>porkchopandflatscreen:</strong> Tu personaje favorito es Akane porque sentís que es similar a vos en apariencia y personalidad.</li>
+                                <li><strong>Ingeniería Biológica:</strong> Te apasiona porque te gusta ayudar a la gente y querés cuidar de todo el mundo, aunque te cueste mucho esfuerzo.</li>
+                            </ul>
+                        </div>
+
+                        <div class="subtarjeta">
+                            <h2 class="subtitulo-verde">Cosas que amo de vos</h2>
+                            <ul class="lista-manzana">
+                                <li>Me encanta tu sonrisa y la forma en que sonreís.</li>
+                                <li>Tus ojos color verde.</li>
+                                <li>Que ames con todo tu corazón a los animales, en especial a tus bebés felinos.</li>
+                                <li>Tu obsesión con las manzanas.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+    <script>
+        interact('.draggable').draggable({
+            inertia: true,
+            modifiers: [interact.modifiers.restrictRect({ restriction: 'parent', endOnly: true })],
+            autoScroll: true,
+            listeners: {
+                move(event) {
+                    const target = event.target;
+                    const x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
+                    const y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+                    target.style.transform = `translate(${x}px, ${y}px)`;
+                    target.setAttribute('data-x', x);
+                    target.setAttribute('data-y', y);
+                }
+            }
+        });
+
+        function reproducirClick() {
+            const audio = document.getElementById('click-audio');
+            if (audio) {
+                audio.currentTime = 0;
+                audio.play().catch(() => {});
+            }
+        }
+    </script>
+</body>
+</html>

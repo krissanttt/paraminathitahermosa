@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fotos y Dibujos 🍏</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <audio id="click-audio" src="imagenes/pesterchum-cease-end-message-sound.mp3" preload="auto"></audio>
+    <div class="body-overlay"></div>
+
+    <div class="navbar">
+        <ul>
+            <li><a href="index.html" onclick="reproducirClick()">Inicio</a></li>
+            <li><a href="gustos.html" onclick="reproducirClick()">Lo que amo de vos</a></li>
+            <li><a href="canciones.html" onclick="reproducirClick()">Canciones</a></li>
+            <li><a href="galeria.html" class="activo" onclick="reproducirClick()">Fotos y dibujos</a></li>
+
+        </ul>
+    </div>
+
+    <div class="content">
+        <h1 class="page-title">Fotos y Dibujos</h1>
+
+        <div class="window strips draggable">
+            <div class="window-header">
+                <p>GALERIA_FOTOS.EXE</p>
+                <div class="buttons">
+                    <div class="button minimize"><i class="fas fa-window-minimize"></i></div>
+                    <div class="button maximize"><i class="far fa-square"></i></div>
+                    <div class="button close"><i class="fas fa-times"></i></div>
+                </div>
+            </div>
+
+            <div class="window-body-wrapper">
+                <div class="window-body">
+                    <h2 class="subtitulo-verde">Fotos</h2>
+                    <div class="galeria-grid">
+                        <div class="marco-item">
+                            <img src="imagenes/WhatsApp Image 2025-12-28 at 5.58.52 PM.jpeg" alt="Foto 1">
+                            <p>mi foto favorita</p>
+                        </div>
+                        <div class="marco-item">
+                            <img src="imagenes/WhatsApp Image 2026-07-22 at 16.08.57.jpeg" alt="Foto 2">
+                            <p>mi nathita y su quesito</p>
+                        </div>
+                        <div class="marco-item">
+                            <img src="imagenes/WhatsApp Image 2026-11-17 at 20.41.51.jpeg" alt="Foto 3">
+                            <p>mi nathita y la gata de la novia de mia</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="window strips draggable">
+            <div class="window-header">
+                <p>GALERIA_DIBUJOS.EXE</p>
+                <div class="buttons">
+                    <div class="button minimize"><i class="fas fa-window-minimize"></i></div>
+                    <div class="button maximize"><i class="far fa-square"></i></div>
+                    <div class="button close"><i class="fas fa-times"></i></div>
+                </div>
+            </div>
+
+            <div class="window-body-wrapper">
+                <div class="window-body">
+                    <h2 class="subtitulo-verde">Dibujos</h2>
+                    <div class="galeria-grid">
+                        <div class="marco-item dibujo">
+                            <img src="imagenes/kisss2.png" alt="Dibujo 1">
+                    
+                        </div>
+                        <div class="marco-item dibujo">
+                            <img src="imagenes/nath y san.png" alt="Dibujo 2">
+                    
+                        </div>
+                        <div class="marco-item dibujo">
+                            <img src="imagenes/nath y vincen.jpeg" alt="Dibujo 3">
+                
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+    <script>
+        interact('.draggable').draggable({
+            inertia: true,
+            modifiers: [interact.modifiers.restrictRect({ restriction: 'parent', endOnly: true })],
+            autoScroll: true,
+            listeners: {
+                move(event) {
+                    const target = event.target;
+                    const x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
+                    const y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+                    target.style.transform = `translate(${x}px, ${y}px)`;
+                    target.setAttribute('data-x', x);
+                    target.setAttribute('data-y', y);
+                }
+            }
+        });
+
+        function reproducirClick() {
+            const audio = document.getElementById('click-audio');
+            if (audio) {
+                audio.currentTime = 0;
+                audio.play().catch(() => {});
+            }
+        }
+    </script>
+</body>
+</html>

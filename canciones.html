@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canciones que me hacen acordar a vos 🍏</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <audio id="click-audio" src="imagenes/pesterchum-cease-end-message-sound.mp3" preload="auto"></audio>
+    <div class="body-overlay"></div>
+
+    <div class="navbar">
+        <ul>
+            <li><a href="index.html" onclick="reproducirClick()">Inicio</a></li>
+            <li><a href="gustos.html" onclick="reproducirClick()">Lo que amo de vos</a></li>
+            <li><a href="canciones.html" class="activo" onclick="reproducirClick()">Canciones</a></li>
+            <li><a href="galeria.html" onclick="reproducirClick()">Fotos y dibujos</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <h1 class="page-title">Canciones que me hacen acordar a vos</h1>
+
+        <div class="window strips draggable">
+            <div class="window-header">
+                <p>PLAYLIST_YOUTUBE.M3U</p>
+                <div class="buttons">
+                    <div class="button minimize"><i class="fas fa-window-minimize"></i></div>
+                    <div class="button maximize"><i class="far fa-square"></i></div>
+                    <div class="button close"><i class="fas fa-times"></i></div>
+                </div>
+            </div>
+
+            <div class="window-body-wrapper">
+                <div class="window-body">
+                    <div style="display: flex; justify-content: center; margin-bottom: 22px;">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=vwNlzw0TMSqhLELB&list=PLJhj5OSXGZfsDNKpEvSKq35wgG0c37zMt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="max-width: 100%; border-radius: 10px; border: 3px solid #73d13d;"></iframe>
+                    </div>
+
+                    <div class="grilla">
+                        <div class="subtarjeta">
+                            <h3 class="subtitulo-verde">Obsessica</h3>
+                            <p>Me hace acordar a vos porque estoy obsessionado con vos.</p>
+                            <a href="https://youtu.be/OerWPMlu4VI?si=CvZgrDAb184EIFNe" target="_blank" rel="noopener noreferrer" class="btn-yt" onclick="reproducirClick()">Escuchar en YouTube</a>
+                        </div>
+
+                        <div class="subtarjeta">
+                            <h3 class="subtitulo-verde">Ain't No Mountain High Enough</h3>
+                            <p>Cada vez que suena pienso en vos por voy a viajar kilometros para ir a poder a verte.</p>
+                            <a href="https://youtu.be/ABfQuZqq8wg?si=V6yJL4O8wIAfs4Ea" target="_blank" rel="noopener noreferrer" class="btn-yt" onclick="reproducirClick()">Escuchar en YouTube</a>
+                        </div>
+
+                        <div class="subtarjeta">
+                            <h3 class="subtitulo-verde">Where Is My Husband</h3>
+                            <p>Me recuerda a vos cuando no sabes de mi y queres saber donde chingaos estoy jejeje.</p>
+                            <a href="https://youtu.be/rK5TyISxZ_M?si=_WygpK-sxsx3gVTG" target="_blank" rel="noopener noreferrer" class="btn-yt" onclick="reproducirClick()">Escuchar en YouTube</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+    <script>
+        interact('.draggable').draggable({
+            inertia: true,
+            modifiers: [interact.modifiers.restrictRect({ restriction: 'parent', endOnly: true })],
+            autoScroll: true,
+            listeners: {
+                move(event) {
+                    const target = event.target;
+                    const x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
+                    const y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+                    target.style.transform = `translate(${x}px, ${y}px)`;
+                    target.setAttribute('data-x', x);
+                    target.setAttribute('data-y', y);
+                }
+            }
+        });
+
+        function reproducirClick() {
+            const audio = document.getElementById('click-audio');
+            if (audio) {
+                audio.currentTime = 0;
+                audio.play().catch(() => {});
+            }
+        }
+    </script>
+</body>
+</html>
